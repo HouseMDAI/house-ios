@@ -33,8 +33,14 @@ struct AIDoctorApp: App {
             if onboardingProvider.needsOnboarding {
                 OnboardingView(presenter: onboardingPresenter)
             } else {
-                HomeView(presenter: homePresenter)
+                TabView {
+                    HomeView(presenter: homePresenter)
+                    if let profile = onboardingProvider.filledOnboarding {
+                        ProfileView(profile: profile)
+                    }
+                }
             }
         }
-    }
+    } // body
+    
 }

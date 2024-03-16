@@ -16,6 +16,8 @@ struct HomeView: View {
             VStack {
                 Text("How are you?")
                 TextField("...", text: $presenter.message)
+                    .lineLimit(5)
+                Button("Send", action: presenter.onSend)
             }
         }.navigationDestination(for: NavigationPage.self) { page in
             switch page {

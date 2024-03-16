@@ -14,7 +14,7 @@ import Foundation
 //}
 
 struct Question: Codable {
-    var id = UUID()
+    var id = UUID() // optional in API
     var text: String
 //    var type: QuestionType
 }
@@ -36,3 +36,47 @@ struct FilledQuestionary: Codable {
 extension Questionary: Hashable {}
 extension Question: Hashable, Identifiable {}
 extension Answer: Hashable {}
+
+/* JSON Examples:
+ 
+ JSON for Question
+ {
+   "text": "What is your favorite color?"
+ }
+ 
+ JSON for Answer
+ 
+ {
+   "text": "Blue"
+ }
+ 
+ JSON for Questionary
+ {
+   "questions": [
+     {
+       "text": "What is your favorite color?"
+     },
+     {
+       "text": "What is your hobby?"
+     }
+   ]
+ }
+ 
+ JSON for FilledQuestionary
+ {
+   "filledQuestions": [
+     {
+       "question": {
+         "text": "What is your favorite color?"
+       },
+       "answer": "Blue"
+     },
+     {
+       "question": {
+         "text": "What is your hobby?"
+       },
+       "answer": "Reading"
+     }
+   ]
+ }
+ */

@@ -9,8 +9,22 @@ import Foundation
 
 class OnboardingProvider: ObservableObject {
     
-    @Published private(set) public var needsOnboarding: Bool = true
-    private(set) public var filledOnboarding: FilledQuestionary? = nil
+    @Published private(set) var needsOnboarding: Bool = true {
+        didSet {
+            UserDefaults.standard.set(needsOnboarding, forKey: "needsOnboarding")
+        }
+    }
+    
+    private(set) var filledOnboarding: FilledQuestionary? {
+        didSet {
+            saveFilledOnboardingToDefaults(filledQuestionary: filledOnboarding)
+        }
+    }
+    
+    init() {
+        self.needsOnboarding = UserDefaults.standard.bool(forKey: "needsOnboarding")
+        loadFilledOnboardingFromDefaults()
+    }
     
     func getOnboardingQuestionary() -> Questionary {
         Questionary(questions: [
@@ -25,4 +39,27 @@ class OnboardingProvider: ObservableObject {
         needsOnboarding = false
         filledOnboarding = filledQuestionary
     }
+    
+    private func saveFilledOnboardingToDefaults(filledQuestionary: FilledQuestionary?) {
+        guard let filledQuestionary = filledQuestionary else {
+            UserDefaults.standard.removeObject(forKey: "filledOnboarding")
+            return
+        }
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(filledQuestionary) {
+            UserDefaults.standard.set(encoded, forKey: "filledOnboarding")
+        }
+    }
+    
+    private func loadFilledOnboardingFromDefaults() {
+        guard let savedFilledQuestionary = UserDefaults.standard.object(forKey: "filledOnboarding") as? Data else {
+            return
+        }
+        let decoder = JSONDecoder()
+        if let loadedQuestionary = try? decoder.decode(FilledQuestionary.self, from: savedFilledQuestionary) {
+            self.filledOnboarding = loadedQuestionary
+            self.needsOnboarding = false
+        }
+    }
 }
+
