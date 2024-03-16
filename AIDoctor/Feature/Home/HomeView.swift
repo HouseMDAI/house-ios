@@ -16,21 +16,28 @@ struct HomeView: View {
             VStack {
                 Text("How are you?")
                 TextField("...", text: $presenter.message)
-                    .lineLimit(5)
+                    .lineLimit(5...10)
+                    .formItem()
                 Button("Send", action: presenter.onSend)
             }
-        }.navigationDestination(for: NavigationPage.self) { page in
-            switch page {
-            case .questinary(let questions):
-                QuestionaryView(
-                    presenter: QuestionaryPresenter(
-                        questions: questions,
-                        answers: FilledQuestionary(filledQuestions: [:]),
-                        completion: presenter.onQuestionaryFilled
+            .padding()
+            .navigationDestination(for: NavigationPage.self) { page in
+                switch page {
+                case .questinary(let questions, let answers):
+                    QuestionaryView(
+                        presenter: QuestionaryPresenter(
+                            questions: questions,
+                            answers: answers,
+                            completion: presenter.onQuestionaryFilled
+                        )
                     )
-                )
-            case .answer(let string):
-                Text("Result: " + string)
+                case .answer(let string):
+                    VStack {
+                        Text("The doctor says...")
+                        Text(string)
+                            .font(.title2)
+                    }
+                }
             }
         }
     }

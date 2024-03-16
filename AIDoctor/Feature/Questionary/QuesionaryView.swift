@@ -13,16 +13,21 @@ struct QuestionaryView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(presenter.questions.questions) { question in
-                VStack {
-                    Text(question.text)
-                    TextField("", text: bindingForQuestion(question))
+            Spacer()
+            VStack {
+                ForEach(presenter.questions.questions) { question in
+                    VStack {
+                        Text(question.text)
+                            .font(.title3)
+                        TextField("", text: bindingForQuestion(question))
+                            .formItem()
+                    }
+                    .padding()
                 }
-                .padding()
+                Button("Next", action: presenter.save)
             }
-            
-            
-            Button("Save", action: presenter.save)
+            .padding()
+            Spacer()
         }
     }
     

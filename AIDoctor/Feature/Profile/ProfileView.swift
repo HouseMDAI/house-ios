@@ -20,7 +20,9 @@ struct ProfileView: View {
         List(profileSorted, id: \.question.id) { item in
             VStack {
                 Text(item.question.text)
+                    .font(.title3)
                 Text(item.answer)
+                    .formItem()
             }
             .padding()
         }

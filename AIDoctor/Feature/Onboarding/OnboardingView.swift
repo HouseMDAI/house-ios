@@ -13,16 +13,20 @@ struct OnboardingView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(presenter.questions.questions) { question in
-                VStack {
-                    Text(question.text)
-                    TextField("", text: bindingForQuestion(question))
+            Spacer()
+            VStack {
+                ForEach(presenter.questions.questions) { question in
+                    VStack {
+                        Text(question.text)
+                        TextField("", text: bindingForQuestion(question))
+                            .formItem()
+                    }
+                    .padding()
                 }
-                .padding()
-            }
-            
+            }.padding()
             
             Button("Save", action: presenter.save)
+            Spacer()
         }
     }
     

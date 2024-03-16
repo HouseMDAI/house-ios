@@ -14,7 +14,6 @@
 		8F3CA0352BA52E7100405817 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0342BA52E7100405817 /* Profile.swift */; };
 		8F3CA0372BA52E9700405817 /* Questionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0362BA52E9700405817 /* Questionary.swift */; };
 		8F3CA0392BA52FF800405817 /* DoctorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0382BA52FF800405817 /* DoctorProvider.swift */; };
-		8F3CA03B2BA5304900405817 /* GPTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA03A2BA5304900405817 /* GPTProvider.swift */; };
 		8F3CA03D2BA5309000405817 /* PromptsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA03C2BA5309000405817 /* PromptsProvider.swift */; };
 		8F3CA03F2BA5355C00405817 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA03E2BA5355C00405817 /* OnboardingView.swift */; };
 		8F3CA0412BA5356400405817 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0402BA5356400405817 /* OnboardingPresenter.swift */; };
@@ -23,7 +22,22 @@
 		8F3CA0472BA53F1600405817 /* QuesionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0462BA53F1600405817 /* QuesionaryView.swift */; };
 		8F3CA0492BA53F1F00405817 /* QuestionaryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0482BA53F1F00405817 /* QuestionaryPresenter.swift */; };
 		8F3CA04B2BA5439B00405817 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA04A2BA5439B00405817 /* ProfileView.swift */; };
+		8F3CA04E2BA58FF800405817 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 8F3CA04D2BA58FF800405817 /* OpenAI */; };
+		8F3CA0522BA5E68600405817 /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0512BA5E68600405817 /* FormItem.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8F0D6C6A2BA60044006D5A77 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8F3CA0152BA52DB300405817 /* AIDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +49,6 @@
 		8F3CA0342BA52E7100405817 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		8F3CA0362BA52E9700405817 /* Questionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionary.swift; sourceTree = "<group>"; };
 		8F3CA0382BA52FF800405817 /* DoctorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProvider.swift; sourceTree = "<group>"; };
-		8F3CA03A2BA5304900405817 /* GPTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTProvider.swift; sourceTree = "<group>"; };
 		8F3CA03C2BA5309000405817 /* PromptsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptsProvider.swift; sourceTree = "<group>"; };
 		8F3CA03E2BA5355C00405817 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		8F3CA0402BA5356400405817 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
@@ -44,6 +57,7 @@
 		8F3CA0462BA53F1600405817 /* QuesionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuesionaryView.swift; sourceTree = "<group>"; };
 		8F3CA0482BA53F1F00405817 /* QuestionaryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionaryPresenter.swift; sourceTree = "<group>"; };
 		8F3CA04A2BA5439B00405817 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8F3CA0512BA5E68600405817 /* FormItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3CA04E2BA58FF800405817 /* OpenAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +91,7 @@
 		8F3CA0172BA52DB300405817 /* AIDoctor */ = {
 			isa = PBXGroup;
 			children = (
+				8F3CA04F2BA5E67500405817 /* General */,
 				8F3CA0332BA52E6000405817 /* Models */,
 				8F3CA0302BA52E3300405817 /* Dependencies */,
 				8F3CA02F2BA52E1500405817 /* Main */,
@@ -154,7 +170,6 @@
 			children = (
 				8F3CA0312BA52E4100405817 /* OnboardingProvider.swift */,
 				8F3CA0382BA52FF800405817 /* DoctorProvider.swift */,
-				8F3CA03A2BA5304900405817 /* GPTProvider.swift */,
 				8F3CA03C2BA5309000405817 /* PromptsProvider.swift */,
 			);
 			path = Dependencies;
@@ -169,6 +184,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8F3CA04F2BA5E67500405817 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				8F3CA0502BA5E67B00405817 /* ViewModifiers */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		8F3CA0502BA5E67B00405817 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				8F3CA0512BA5E68600405817 /* FormItem.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -179,12 +210,16 @@
 				8F3CA0112BA52DB300405817 /* Sources */,
 				8F3CA0122BA52DB300405817 /* Frameworks */,
 				8F3CA0132BA52DB300405817 /* Resources */,
+				8F0D6C6A2BA60044006D5A77 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = AIDoctor;
+			packageProductDependencies = (
+				8F3CA04D2BA58FF800405817 /* OpenAI */,
+			);
 			productName = AIDoctor;
 			productReference = 8F3CA0152BA52DB300405817 /* AIDoctor.app */;
 			productType = "com.apple.product-type.application";
@@ -213,6 +248,10 @@
 				Base,
 			);
 			mainGroup = 8F3CA00C2BA52DB300405817;
+			packageReferences = (
+				8F3CA04C2BA58FF800405817 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				8F3CA0532BA5F63300405817 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 8F3CA0162BA52DB300405817 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -239,9 +278,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3CA0522BA5E68600405817 /* FormItem.swift in Sources */,
 				8F3CA0372BA52E9700405817 /* Questionary.swift in Sources */,
 				8F3CA0392BA52FF800405817 /* DoctorProvider.swift in Sources */,
-				8F3CA03B2BA5304900405817 /* GPTProvider.swift in Sources */,
 				8F3CA0432BA5356C00405817 /* HomeView.swift in Sources */,
 				8F3CA0412BA5356400405817 /* OnboardingPresenter.swift in Sources */,
 				8F3CA0192BA52DB300405817 /* AIDoctorApp.swift in Sources */,
@@ -379,6 +418,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AIDoctor/AIDoctor.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AIDoctor/Preview Content\"";
@@ -396,13 +436,14 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.markparker.aidoctor.AIDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -417,6 +458,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AIDoctor/AIDoctor.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AIDoctor/Preview Content\"";
@@ -434,13 +476,14 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.markparker.aidoctor.AIDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -471,6 +514,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F3CA04C2BA58FF800405817 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.6;
+			};
+		};
+		8F3CA0532BA5F63300405817 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F3CA04D2BA58FF800405817 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F3CA04C2BA58FF800405817 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8F3CA00D2BA52DB300405817 /* Project object */;
 }

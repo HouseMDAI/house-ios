@@ -13,29 +13,30 @@ import Foundation
 //    case bool
 //}
 
-struct Question: Codable {
+struct Question {
     var id = UUID() // optional in API
     var text: String
 //    var type: QuestionType
 }
 
-struct Answer: Codable {
+struct Answer {
     var text: String
 }
 
-struct Questionary: Codable {
+struct Questionary {
     var questions: [Question]
 }
 
-struct FilledQuestionary: Codable {
+struct FilledQuestionary {
     var filledQuestions: [Question: String]
 }
 
 // MARK: - Extensions
 
-extension Questionary: Hashable {}
-extension Question: Hashable, Identifiable {}
-extension Answer: Hashable {}
+extension Questionary: Codable, Hashable {}
+extension Question: Codable, Hashable, Identifiable {}
+extension Answer: Codable, Hashable {}
+extension FilledQuestionary: Codable, Hashable {}
 
 /* JSON Examples:
  

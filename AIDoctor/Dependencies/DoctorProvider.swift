@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import OpenAI
+//import Alamofire
 
 enum DoctorResponse {
     case questions(Questionary)
@@ -29,30 +31,79 @@ enum DoctorResponse {
 }
 
 class DoctorProvider {
+    
+    private let baseUrl = "https://331b-185-79-124-34.ngrok-free.app"
+    
     func sendMessage(message: String) async throws -> DoctorResponse {
-        let promptProvider = PromptsProvider()
-        let profile = OnboardingProvider().filledOnboarding!
-        let gpt = GPTProvider(apiKey: "", baseUrl: "")
+        try! await sendAnswers(message: message, answers: FilledQuestionary(filledQuestions: [:]))
+    }
+    
+    func sendAnswers(message: String, answers: FilledQuestionary) async throws -> DoctorResponse {
         
-        let prompt = promptProvider.homeRole
-        + promptProvider.profile(profile: profile)
-        + promptProvider.message(message: message)
+        struct DoctorParams: Codable {
+            var message: String
+            var user_card: [String: String]
+            var filled_questionary: FilledQuestionary
+        }
         
-        let responseString = try await gpt.prompt(prompt)
+        let onboard = OnboardingProvider()
+            
+        let paramsObject = DoctorParams(
+            message: message,
+            user_card: Dictionary(uniqueKeysWithValues: onboard.filledOnboarding!.filledQuestions.map { ($0.key.text, $0.value) }),
+            filled_questionary: answers
+        )
+        print(paramsObject)
+        
+//        let responseString = try await AF.request(
+//            baseUrl + "/doctor", 
+//            method: .get,
+//            parameters: params,
+//            encoder: JSONParameterEncoder.default
+//        ).serializingString().value
+        
+        var request = URLRequest(url: URL(string: baseUrl + "/doctor")!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let httpBody = try! JSONEncoder().encode(paramsObject)
+        print("HTTP BODY: ", String(data: httpBody, encoding: .utf8)!)
+        request.httpBody = httpBody
+
+        let (data, response) = try! await URLSession.shared.data(for: request)
+//        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw URLError(.badServerResponse) }
+        let responseString = String(data: data, encoding: .utf8)!
+        
+        print("Response:", responseString)
+        
         return try! DoctorResponse(from: responseString)
+    }
+}
+
+class AIDoctorProvider {
+    
+    private var openAI: OpenAI
+    
+    init() {
+        openAI = OpenAI(apiToken: "")
+    }
+    
+    func sendMessage(message: String) async throws -> DoctorResponse {
+        try! await sendAnswers(message: message, answers: FilledQuestionary(filledQuestions: [:]))
     }
     
     func sendAnswers(message: String, answers: FilledQuestionary) async throws -> DoctorResponse {
         let promptProvider = PromptsProvider()
         let profile = OnboardingProvider().filledOnboarding!
-        let gpt = GPTProvider(apiKey: "", baseUrl: "")
         
-        let prompt = promptProvider.homeRole
-        + promptProvider.profile(profile: profile)
-        + promptProvider.message(message: message)
-        + promptProvider.answers(filled: answers)
+        let query = ChatQuery(model: .gpt3_5Turbo, messages: [
+            Chat(role: .system, content: promptProvider.homeRole),
+            Chat(role: .user, content: promptProvider.profile(profile: profile)),
+            Chat(role: .user, content: promptProvider.message(message: message)),
+            Chat(role: .user, content: promptProvider.answers(filled: answers)),
+        ])
         
-        let responseString = try await gpt.prompt(prompt)
-        return try! DoctorResponse(from: responseString)
+        let result = try await openAI.chats(query: query)
+        return try! DoctorResponse(from: result.choices[0].message.content ?? "")
     }
 }
