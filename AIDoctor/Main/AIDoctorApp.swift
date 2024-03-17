@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlamofireNetworkActivityLogger
 
 @main
 struct AIDoctorApp: App {
@@ -26,6 +27,8 @@ struct AIDoctorApp: App {
         _onboardingProvider = StateObject(wrappedValue: onboardingProvider)
         _onboardingPresenter = StateObject(wrappedValue: onboardingPresenter)
         _homePresenter = StateObject(wrappedValue: homePresenter)
+        NetworkActivityLogger.shared.level = .debug
+        NetworkActivityLogger.shared.startLogging()
     }
     
     var body: some Scene {

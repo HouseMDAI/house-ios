@@ -33,8 +33,8 @@ struct QuestionaryView: View {
     
     private func bindingForQuestion(_ question: Question) -> Binding<String> {
         Binding(
-            get: { self.presenter.answers.filledQuestions[question] ?? "" },
-            set: { self.presenter.answers.filledQuestions[question] = $0 }
+            get: { self.presenter.answers.filledQuestions[question.text] ?? "" },
+            set: { self.presenter.answers.filledQuestions[question.text] = $0 }
         )
     }
 }

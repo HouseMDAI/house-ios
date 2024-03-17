@@ -10,16 +10,16 @@ import SwiftUI
 struct ProfileView: View {
     
     var profile: FilledQuestionary
-    var profileSorted: [(question: Question, answer: String)] {
+    var profileSorted: [(question: String, answer: String)] {
         profile.filledQuestions
-            .sorted { $0.key.text < $1.key.text }
+            .sorted { $0.key < $1.key }
             .map { (question: $0.key, answer: $0.value) }
     }
     
     var body: some View {
-        List(profileSorted, id: \.question.id) { item in
+        List(profileSorted, id: \.question) { item in
             VStack {
-                Text(item.question.text)
+                Text(item.question)
                     .font(.title3)
                 Text(item.answer)
                     .formItem()

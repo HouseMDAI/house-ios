@@ -26,10 +26,11 @@ class OnboardingProvider: ObservableObject {
     func getOnboardingQuestionary() -> Questionary {
         Questionary(questions: [
 //            Question(text: "Name"),
-            Question(text: "Sex"),
-            Question(text: "Age"),
-            Question(text: "Weight"),
-            Question(text: "Special conditions"),
+            Question(text: "sex"),
+            Question(text: "age"),
+            Question(text: "weight"),
+            Question(text: "height"),
+            Question(text: "special_conditions"),
         ])
     }
     

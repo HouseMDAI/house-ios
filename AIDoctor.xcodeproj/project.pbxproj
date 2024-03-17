@@ -11,7 +11,6 @@
 		8F3CA01D2BA52DB500405817 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F3CA01C2BA52DB500405817 /* Assets.xcassets */; };
 		8F3CA0212BA52DB500405817 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F3CA0202BA52DB500405817 /* Preview Assets.xcassets */; };
 		8F3CA0322BA52E4100405817 /* OnboardingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0312BA52E4100405817 /* OnboardingProvider.swift */; };
-		8F3CA0352BA52E7100405817 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0342BA52E7100405817 /* Profile.swift */; };
 		8F3CA0372BA52E9700405817 /* Questionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0362BA52E9700405817 /* Questionary.swift */; };
 		8F3CA0392BA52FF800405817 /* DoctorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0382BA52FF800405817 /* DoctorProvider.swift */; };
 		8F3CA03D2BA5309000405817 /* PromptsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA03C2BA5309000405817 /* PromptsProvider.swift */; };
@@ -24,6 +23,8 @@
 		8F3CA04B2BA5439B00405817 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA04A2BA5439B00405817 /* ProfileView.swift */; };
 		8F3CA04E2BA58FF800405817 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 8F3CA04D2BA58FF800405817 /* OpenAI */; };
 		8F3CA0522BA5E68600405817 /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA0512BA5E68600405817 /* FormItem.swift */; };
+		8F4EEAF02BA6FDCC005D6227 /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4EEAEF2BA6FDCC005D6227 /* AlamofireNetworkActivityLogger */; };
+		8F8F37852BA7012800607556 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8F37842BA7012800607556 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,7 +47,6 @@
 		8F3CA01E2BA52DB500405817 /* AIDoctor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AIDoctor.entitlements; sourceTree = "<group>"; };
 		8F3CA0202BA52DB500405817 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8F3CA0312BA52E4100405817 /* OnboardingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProvider.swift; sourceTree = "<group>"; };
-		8F3CA0342BA52E7100405817 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		8F3CA0362BA52E9700405817 /* Questionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionary.swift; sourceTree = "<group>"; };
 		8F3CA0382BA52FF800405817 /* DoctorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProvider.swift; sourceTree = "<group>"; };
 		8F3CA03C2BA5309000405817 /* PromptsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptsProvider.swift; sourceTree = "<group>"; };
@@ -65,7 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F8F37852BA7012800607556 /* Alamofire in Frameworks */,
 				8F3CA04E2BA58FF800405817 /* OpenAI in Frameworks */,
+				8F4EEAF02BA6FDCC005D6227 /* AlamofireNetworkActivityLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +79,7 @@
 			children = (
 				8F3CA0172BA52DB300405817 /* AIDoctor */,
 				8F3CA0162BA52DB300405817 /* Products */,
+				8F4EEAE72BA6FD98005D6227 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,7 +181,6 @@
 		8F3CA0332BA52E6000405817 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8F3CA0342BA52E7100405817 /* Profile.swift */,
 				8F3CA0362BA52E9700405817 /* Questionary.swift */,
 			);
 			path = Models;
@@ -200,6 +202,13 @@
 			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
+		8F4EEAE72BA6FD98005D6227 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +228,8 @@
 			name = AIDoctor;
 			packageProductDependencies = (
 				8F3CA04D2BA58FF800405817 /* OpenAI */,
+				8F4EEAEF2BA6FDCC005D6227 /* AlamofireNetworkActivityLogger */,
+				8F8F37842BA7012800607556 /* Alamofire */,
 			);
 			productName = AIDoctor;
 			productReference = 8F3CA0152BA52DB300405817 /* AIDoctor.app */;
@@ -250,7 +261,8 @@
 			mainGroup = 8F3CA00C2BA52DB300405817;
 			packageReferences = (
 				8F3CA04C2BA58FF800405817 /* XCRemoteSwiftPackageReference "OpenAI" */,
-				8F3CA0532BA5F63300405817 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8F4EEAEE2BA6FDCB005D6227 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */,
+				8F8F37832BA7012800607556 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 8F3CA0162BA52DB300405817 /* Products */;
 			projectDirPath = "";
@@ -288,7 +300,6 @@
 				8F3CA0472BA53F1600405817 /* QuesionaryView.swift in Sources */,
 				8F3CA03D2BA5309000405817 /* PromptsProvider.swift in Sources */,
 				8F3CA03F2BA5355C00405817 /* OnboardingView.swift in Sources */,
-				8F3CA0352BA52E7100405817 /* Profile.swift in Sources */,
 				8F3CA0322BA52E4100405817 /* OnboardingProvider.swift in Sources */,
 				8F3CA04B2BA5439B00405817 /* ProfileView.swift in Sources */,
 				8F3CA0452BA5357400405817 /* HomePresenter.swift in Sources */,
@@ -441,6 +452,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = me.markparker.aidoctor.AIDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -481,6 +493,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = me.markparker.aidoctor.AIDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -524,12 +537,20 @@
 				minimumVersion = 0.2.6;
 			};
 		};
-		8F3CA0532BA5F63300405817 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		8F4EEAEE2BA6FDCB005D6227 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/konkab/AlamofireNetworkActivityLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.0;
+			};
+		};
+		8F8F37832BA7012800607556 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.0;
+				kind = exactVersion;
+				version = 5.8.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -539,6 +560,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8F3CA04C2BA58FF800405817 /* XCRemoteSwiftPackageReference "OpenAI" */;
 			productName = OpenAI;
+		};
+		8F4EEAEF2BA6FDCC005D6227 /* AlamofireNetworkActivityLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4EEAEE2BA6FDCB005D6227 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */;
+			productName = AlamofireNetworkActivityLogger;
+		};
+		8F8F37842BA7012800607556 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F8F37832BA7012800607556 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,7 +7,7 @@
 
 import Foundation
 import OpenAI
-//import Alamofire
+import Alamofire
 
 enum DoctorResponse {
     case questions(Questionary)
@@ -15,11 +15,12 @@ enum DoctorResponse {
     
     init(from string: String) throws {
         if let data = string.data(using: .utf8) {
-            if string.contains("\"questions\":") {
-                let decoded = try JSONDecoder().decode(Questionary.self, from: data)
+            print("Processing DoctorResponse:", string)
+            if string.contains("\"questions\""){
+                let decoded = try! JSONDecoder().decode(Questionary.self, from: data)
                 self = .questions(decoded)
-            } else if string.contains("\"text\":") {
-                let decoded = try JSONDecoder().decode(Answer.self, from: data)
+            } else if string.contains("\"text\"") {
+                let decoded = try! JSONDecoder().decode(Answer.self, from: data)
                 self = .answer(decoded.text)
             } else {
                 throw NSError(domain: "DoctorResponseError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unknown response format"])
@@ -32,7 +33,7 @@ enum DoctorResponse {
 
 class DoctorProvider {
     
-    private let baseUrl = "https://331b-185-79-124-34.ngrok-free.app"
+    private let baseUrl = "https://6a99-194-8-199-28.ngrok-free.app"
     
     func sendMessage(message: String) async throws -> DoctorResponse {
         try! await sendAnswers(message: message, answers: FilledQuestionary(filledQuestions: [:]))
@@ -42,37 +43,41 @@ class DoctorProvider {
         
         struct DoctorParams: Codable {
             var message: String
-            var user_card: [String: String]
-            var filled_questionary: FilledQuestionary
+            var userCard: [String: String]
+            var filledQuestionary: FilledQuestionary
         }
         
         let onboard = OnboardingProvider()
             
         let paramsObject = DoctorParams(
             message: message,
-            user_card: Dictionary(uniqueKeysWithValues: onboard.filledOnboarding!.filledQuestions.map { ($0.key.text, $0.value) }),
-            filled_questionary: answers
+            userCard: onboard.filledOnboarding!.filledQuestions,
+            filledQuestionary: answers
         )
-        print(paramsObject)
+//        print(paramsObject)
+        let encoder = JSONParameterEncoder.default
+        encoder.encoder.keyEncodingStrategy = .convertToSnakeCase
         
-//        let responseString = try await AF.request(
-//            baseUrl + "/doctor", 
-//            method: .get,
-//            parameters: params,
-//            encoder: JSONParameterEncoder.default
-//        ).serializingString().value
+        let responseString = try await AF.request(
+            baseUrl + "/doctor", 
+            method: .post,
+            parameters: paramsObject,
+            encoder: encoder
+        ).serializingString().value
         
-        var request = URLRequest(url: URL(string: baseUrl + "/doctor")!)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let httpBody = try! JSONEncoder().encode(paramsObject)
-        print("HTTP BODY: ", String(data: httpBody, encoding: .utf8)!)
-        request.httpBody = httpBody
-
-        let (data, response) = try! await URLSession.shared.data(for: request)
-//        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw URLError(.badServerResponse) }
-        let responseString = String(data: data, encoding: .utf8)!
+//        var request = URLRequest(url: URL(string: baseUrl + "/doctor")!)
+//        request.httpMethod = "POST"
+//        request.setValue("application/json", forHTTPHeaderField: "Accept")
+//
+//        let encoder = JSONEncoder()
+//        encoder.keyEncodingStrategy = .convertToSnakeCase
+//        let httpBody = try! encoder.encode(paramsObject)
+//        print("HTTP BODY: ", String(data: httpBody, encoding: .utf8)!)
+//        request.httpBody = httpBody
+//
+//        let (data, _) = try! await URLSession.shared.data(for: request)
+////        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw URLError(.badServerResponse) }
+//        let responseString = String(data: data, encoding: .utf8)!
         
         print("Response:", responseString)
         
