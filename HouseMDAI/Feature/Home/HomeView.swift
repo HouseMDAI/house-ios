@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  AIDoctor
+//  HouseMDAI
 //
 //  Created by Mark Parker on 16/03/2024.
 //
@@ -36,6 +36,7 @@ struct HomeView: View {
                         Text("The doctor says...")
                         Text(string)
                             .font(.title2)
+                            .padding()
                     }
                 }
             }

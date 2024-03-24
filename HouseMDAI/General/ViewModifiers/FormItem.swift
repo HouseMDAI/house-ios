@@ -1,6 +1,6 @@
 //
 //  FormItem.swift
-//  AIDoctor
+//  HouseMDAI
 //
 //  Created by Mark Parker on 16/03/2024.
 //
@@ -19,7 +19,7 @@ extension View {
 
 #Preview {
     VStack {
-        TextField("Some text here", text: .constant("Some Lorem Here"))
+        TextField("Some text here", text: .constant("Some text Here"))
             .formItem()
     }
 }

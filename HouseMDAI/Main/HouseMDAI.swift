@@ -1,6 +1,6 @@
 //
-//  AIDoctorApp.swift
-//  AIDoctor
+//  HouseMDAI.swift
+//  HouseMDAI
 //
 //  Created by Mark Parker on 16/03/2024.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import AlamofireNetworkActivityLogger
 
 @main
-struct AIDoctorApp: App {
+struct HouseMDAI: App {
     
     @StateObject private var onboardingProvider: OnboardingProvider
     @StateObject private var onboardingPresenter: OnboardingPresenter
