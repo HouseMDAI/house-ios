@@ -8,8 +8,9 @@
 import Foundation
 
 class OnboardingPresenter: ObservableObject {
-    private(set) public var questions: Questionary
+
     @Published public var answers: FilledQuestionary
+    private(set) public var questions: Questionary
     private var completion: (FilledQuestionary) -> Void
     
     init(questions: Questionary, answers: FilledQuestionary, completion: @escaping (FilledQuestionary) -> Void) {

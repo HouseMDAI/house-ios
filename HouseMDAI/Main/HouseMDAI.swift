@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AlamofireNetworkActivityLogger
 
 @main
 struct HouseMDAI: App {
@@ -17,18 +16,19 @@ struct HouseMDAI: App {
     
     init() {
         let onboardingProvider = OnboardingProvider()
+        
         let onboardingPresenter = OnboardingPresenter(
             questions: onboardingProvider.getOnboardingQuestionary(),
             answers: FilledQuestionary(filledQuestions: [:]),
             completion: onboardingProvider.saveOnboardingAnswers
         )
-        let homePresenter = HomePresenter()
+        
+        let doctor = BackendDoctorProvider(baseUrl: "https://localhost:8000") // DirectDoctorProvider(apiToken: "")
+        let homePresenter = HomePresenter(doctor: doctor)
         
         _onboardingProvider = StateObject(wrappedValue: onboardingProvider)
         _onboardingPresenter = StateObject(wrappedValue: onboardingPresenter)
         _homePresenter = StateObject(wrappedValue: homePresenter)
-        NetworkActivityLogger.shared.level = .debug
-        NetworkActivityLogger.shared.startLogging()
     }
     
     var body: some Scene {
@@ -45,5 +45,4 @@ struct HouseMDAI: App {
             }
         }
     } // body
-    
 }
